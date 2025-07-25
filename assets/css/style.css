@@ -1,13 +1,13 @@
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    background: linear-gradient(120deg, #181c2a 60%, #23263a 100%);
+    color: #e6e6e6;
     margin: 0;
     padding: 0;
-    background: #181c2a;
-    color: #e6e6e6;
 }
 .header-dark, header {
-    background: #181c2a;
-    padding-bottom: 40px;
+    background: transparent;
+    box-shadow: none;
 }
 .nav-bar {
     display: flex;
@@ -16,40 +16,41 @@ body {
     padding: 24px 40px 0 40px;
     max-width: 1200px;
     margin: 0 auto;
+    background: rgba(24,28,42,0.98);
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 2px 16px rgba(0,255,208,0.04);
 }
 .nav-logo {
-    font-size: 1.5em;
+    font-size: 1.7em;
     color: #00ffd0;
     text-decoration: none;
     font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 12px #00ffd044;
 }
 .nav-links a {
     color: #e6e6e6;
     text-decoration: none;
     margin: 0 18px;
     font-weight: 500;
-    transition: color 0.2s;
+    font-size: 1.08em;
+    transition: color 0.2s, border-bottom 0.2s;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
 }
 .nav-links a:hover {
     color: #00ffd0;
-}
-.nav-btn {
-    background: #00ffd0;
-    color: #181c2a;
-    padding: 8px 22px;
-    border-radius: 20px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.2s;
-}
-.nav-btn:hover {
-    background: #00bfae;
+    border-bottom: 2px solid #00ffd0;
 }
 .hero {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 30px;
+    background: rgba(35,38,58,0.98);
+    border-radius: 18px;
+    box-shadow: 0 2px 16px rgba(0,255,208,0.04);
+    padding: 32px 0 24px 0;
 }
 .hero-img {
     width: 160px;
@@ -59,39 +60,54 @@ body {
     border: 4px solid #00ffd0;
     background: #23263a;
     margin-bottom: 18px;
+    box-shadow: 0 2px 16px #00ffd044;
 }
 .hero-info {
     text-align: center;
 }
 .hero-info h1 {
-    font-size: 2.2em;
+    font-size: 2.3em;
     margin: 0 0 10px 0;
+    color: #00ffd0;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 .destaque {
     color: #00ffd0;
 }
 .profissao {
-    font-size: 1.1em;
+    font-size: 1.15em;
     color: #00ffd0;
     margin-bottom: 8px;
+    font-weight: 500;
 }
 .descricao {
     color: #b0b0b0;
     margin-bottom: 18px;
+    font-size: 1.08em;
 }
-.btn-cv, .hero-info .btn-cv {
+.btn-cv, .btn-cv-web {
     display: inline-block;
-    background: #00ffd0;
+    background: linear-gradient(90deg, #00ffd0 60%, #00bfae 100%);
     color: #181c2a;
     padding: 10px 28px;
     border-radius: 24px;
     text-decoration: none;
     font-weight: bold;
     margin-top: 10px;
-    transition: background 0.2s;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 12px rgba(0,255,208,0.10);
+    animation: btnPulseWeb 2.2s infinite alternate;
 }
-.btn-cv:hover {
-    background: #00bfae;
+.btn-cv:hover, .btn-cv-web:hover {
+    background: linear-gradient(90deg, #00bfae 60%, #00ffd0 100%);
+    color: #fff;
+    transform: scale(1.08);
+    box-shadow: 0 6px 24px rgba(0,255,208,0.18);
+}
+@keyframes btnPulseWeb {
+    0% { box-shadow: 0 2px 12px rgba(0,255,208,0.10); }
+    100% { box-shadow: 0 8px 32px rgba(0,255,208,0.18); }
 }
 .skills {
     display: flex;
@@ -111,6 +127,7 @@ body {
     min-width: 150px;
     transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
     cursor: pointer;
+    font-size: 1.08em;
 }
 .skill-item:hover {
     background: #282c3f;
@@ -122,6 +139,7 @@ body {
     display: block;
     margin-bottom: 10px;
     color: #00ffd0;
+    text-shadow: 0 2px 12px #00ffd044;
 }
 .skill-item h3 {
     color: #fff;
@@ -145,6 +163,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 1.08em;
 }
 .about-section h2 {
     color: #00ffd0;
@@ -152,97 +171,129 @@ body {
     margin-bottom: 18px;
     letter-spacing: 1px;
 }
-.about-section form {
+.project-card {
+    background: #23263a;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 32px auto;
+    max-width: 420px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+.project-card:hover {
+    box-shadow: 0 6px 24px rgba(0,255,208,0.10);
+    transform: scale(1.03);
+}
+#snakeGame {
+    background: #181c2a;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto 12px auto;
+    box-shadow: 0 2px 8px #0055ff44;
+    max-width: 320px;
+    max-height: 320px;
+}
+.cv-container {
+    max-width: 900px;
+    margin: 48px auto;
+    background: #23263a;
+    border-radius: 18px;
+    box-shadow: 0 6px 32px rgba(0,255,208,0.08), 0 2px 16px rgba(0,0,0,0.10);
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+.cv-left {
+    flex: 1 1 280px;
+    background: linear-gradient(120deg, #f7f7f7 80%, #e6e6e6 100%);
+    padding: 40px 28px 40px 36px;
+    min-width: 240px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    margin-top: 10px;
-    background: #23263a;
-    padding: 16px 10px;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
-    max-width: 340px;
-    margin-left: auto;
-    margin-right: auto;
-    animation: fadeInUpForm 0.8s cubic-bezier(0.77,0,0.18,1);
+    justify-content: flex-start;
+    box-shadow: 2px 0 16px rgba(0,255,208,0.04);
 }
-@keyframes fadeInUpForm {
-    from {
-        opacity: 0;
-        transform: translateY(40px) scale(0.97);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-.about-section label {
-    color: #00ffd0;
-    font-weight: 500;
-    margin-bottom: 1px;
-    font-size: 1em;
-}
-.about-section input,
-.about-section textarea {
-    background: #181c2a;
+.cv-right {
+    flex: 2 1 420px;
+    padding: 40px 40px 40px 32px;
     color: #e6e6e6;
-    border: 2px solid #23263a;
-    border-radius: 8px;
-    padding: 7px 10px;
-    font-size: 1em;
-    transition: border 0.2s, box-shadow 0.2s;
-    outline: none;
-    margin-bottom: 1px;
+    background: #23263a;
 }
-.about-section input:focus,
-.about-section textarea:focus {
-    border: 2px solid #00ffd0;
-    box-shadow: 0 0 0 2px #00ffd055;
-}
-.about-section button {
-    background: linear-gradient(90deg, #00ffd0 60%, #00bfae 100%);
-    color: #181c2a;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 0;
-    font-size: 1em;
+.cv-title {
+    text-align: center;
+    font-size: 2.5em;
     font-weight: bold;
-    cursor: pointer;
-    margin-top: 4px;
-    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 8px rgba(0,255,208,0.13);
-    letter-spacing: 0.5px;
-}
-.about-section button:hover {
-    background: linear-gradient(90deg, #00bfae 60%, #00ffd0 100%);
-    color: #fff;
-    transform: scale(1.04);
-    box-shadow: 0 4px 16px rgba(0,255,208,0.18);
-}
-.contato-fixo {
-    position: fixed;
-    right: 32px;
-    bottom: 24px;
-    background: #23263aee;
-    border-radius: 10px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
-    padding: 16px 22px;
-    z-index: 100;
-    text-align: right;
-}
-.contato-fixo a {
+    letter-spacing: 2px;
     color: #00ffd0;
-    text-decoration: underline;
+    margin-bottom: 24px;
+    text-shadow: 0 2px 12px #00ffd044;
+}
+.cv-section {
+    margin-bottom: 32px;
+}
+.cv-section h3 {
+    color: #00ffd0;
+    font-size: 1.18em;
+    margin-bottom: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.cv-list {
+    margin: 0 0 0 18px;
+    padding: 0;
+    color: #23263a;
+    font-size: 1.05em;
+}
+.cv-list li {
+    margin-bottom: 8px;
+    line-height: 1.7;
+}
+.cv-contact {
+    font-size: 1.08em;
+    margin-bottom: 22px;
+    color: #23263a;
+}
+.cv-contact a {
+    color: #0055ff;
+    text-decoration: none;
     font-weight: 500;
 }
+.cv-contact a:hover {
+    text-decoration: underline;
+    color: #00ffd0;
+}
+.cv-label {
+    font-weight: bold;
+    color: #23263a;
+    margin-right: 4px;
+}
+.cv-divider {
+    width: 80%;
+    height: 1.5px;
+    background: linear-gradient(90deg, #00ffd0 40%, #0055ff 100%);
+    margin: 18px auto 24px auto;
+    border-radius: 2px;
+    opacity: 0.5;
+}
+.cv-right p, .cv-right li {
+    color: #e6e6e6;
+}
+.cv-right ul {
+    margin-left: 18px;
+}
+.cv-section:last-child {
+    margin-bottom: 0;
+}
+/* Ícone de contato pequeno e responsivo */
 .contato-icone {
     position: fixed;
-    right: 32px;
-    bottom: 24px;
+    right: 16px;
+    bottom: 16px;
     background: #00ffd0;
     border-radius: 50%;
-    width: 56px;
-    height: 56px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -256,100 +307,37 @@ body {
     transform: scale(1.08);
 }
 .contato-icone svg {
-    width: 28px;
-    height: 28px;
+    width: 22px;
+    height: 22px;
     color: #181c2a;
 }
+/* Pop-up de informações de contato ao passar o mouse no ícone */
 .contato-info-pop {
     position: fixed;
-    right: 100px;
-    bottom: 32px;
+    right: 60px;
+    bottom: 24px;
     background: #23263aee;
     border-radius: 10px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.10);
-    padding: 16px 22px;
+    padding: 12px 18px;
     z-index: 101;
-    text-align: right;
+    text-align: left;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s;
+    color: #00ffd0;
+    font-size: 1em;
+    min-width: 180px;
 }
 .contato-icone:hover + .contato-info-pop,
 .contato-info-pop:hover {
     opacity: 1;
     pointer-events: auto;
 }
-.contato-info-pop a {
-    color: #00ffd0;
-    text-decoration: underline;
-    font-weight: 500;
-}
-/* LED inferior animado com efeito pulsar menos iluminado */
-.led-bar.led-bottom {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100vw;
-    height: 14px;
-    z-index: 120;
-    border-radius: 12px 12px 0 0;
-    background: linear-gradient(90deg, var(--led-color1, #00ffd0), var(--led-color2, #00bfae));
-    box-shadow: 0 0 12px 2px var(--led-color1, #00ffd0), 0 0 24px 6px var(--led-color2, #00bfae);
-    animation: ledGlowBottom 4s cubic-bezier(0.77,0,0.18,1) infinite alternate, ledPulse 2.2s ease-in-out infinite;
-    transition: background 1.2s cubic-bezier(0.77,0,0.18,1), box-shadow 1.2s cubic-bezier(0.77,0,0.18,1), filter 1.2s cubic-bezier(0.77,0,0.18,1);
-}
-@keyframes ledGlowBottom {
-    0% {
-        filter: brightness(1.05) drop-shadow(0 0 6px var(--led-color1, #00ffd0));
-        background: linear-gradient(90deg, var(--led-color1, #00ffd0), var(--led-color2, #00bfae));
-    }
-    50% {
-        filter: brightness(1.15) drop-shadow(0 0 12px var(--led-color2, #00bfae));
-        background: linear-gradient(90deg, var(--led-color2, #00bfae), var(--led-color1, #00ffd0));
-    }
-    100% {
-        filter: brightness(1.05) drop-shadow(0 0 6px var(--led-color1, #00ffd0));
-        background: linear-gradient(90deg, var(--led-color1, #00ffd0), var(--led-color2, #00bfae));
-    }
-}
-@keyframes ledPulse {
-    0% {
-        box-shadow: 0 0 12px 2px var(--led-color1, #00ffd0), 0 0 24px 6px var(--led-color2, #00bfae);
-        opacity: 1;
-    }
-    50% {
-        box-shadow: 0 0 24px 8px var(--led-color1, #00ffd0), 0 0 36px 12px var(--led-color2, #00bfae);
-        opacity: 0.7;
-    }
-    100% {
-        box-shadow: 0 0 12px 2px var(--led-color1, #00ffd0), 0 0 24px 6px var(--led-color2, #00bfae);
-        opacity: 1;
-    }
-}
-/* Mantém as cores por página */
-body.index .led-bar.led-bottom {
-    --led-color1: #00ffd0;
-    --led-color2: #00bfae;
-}
-body.about .led-bar.led-bottom {
-    --led-color1: #ff00c8;
-    --led-color2: #ff7ad0;
-}
-body.projects .led-bar.led-bottom {
-    --led-color1: #00aaff;
-    --led-color2: #0055ff;
-}
 @media (max-width: 900px) {
-    .skills {
-        flex-direction: column;
-        gap: 18px;
-        align-items: center;
-    }
-    .nav-bar {
-        flex-direction: column;
-        gap: 10px;
-        padding: 24px 10px 0 10px;
-    }
+    .cv-container { flex-direction: column; }
+    .cv-left { min-width: 100%; box-shadow: none; padding: 32px 18px; }
+    .cv-right { padding: 32px 18px; }
 }
 @media (max-width: 700px) {
     body {
@@ -443,5 +431,23 @@ body.projects .led-bar.led-bottom {
     }
     .led-bar.led-bottom {
         height: 10px;
+    }
+    .contato-icone {
+        right: 8px;
+        bottom: 8px;
+        width: 32px;
+        height: 32px;
+    }
+    .contato-icone svg {
+        width: 16px;
+        height: 16px;
+    }
+    /* Pop-up de informações de contato ao passar o mouse no ícone */
+    .contato-info-pop {
+        right: 40px;
+        bottom: 8px;
+        padding: 8px 10px;
+        font-size: 0.95em;
+        min-width: 120px;
     }
 }
