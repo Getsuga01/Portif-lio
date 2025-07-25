@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Currículo - Ronaldo Avansini</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body {
+            background: linear-gradient(120deg, #181c2a 60%, #23263a 100%);
+        }
+        .cv-container {
+            max-width: 900px;
+            margin: 48px auto;
+            background: #23263a;
+            border-radius: 18px;
+            box-shadow: 0 6px 32px rgba(0,255,208,0.08), 0 2px 16px rgba(0,0,0,0.10);
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+        .cv-left {
+            flex: 1 1 280px;
+            background: linear-gradient(120deg, #f7f7f7 80%, #e6e6e6 100%);
+            padding: 40px 28px 40px 36px;
+            min-width: 240px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            box-shadow: 2px 0 16px rgba(0,255,208,0.04);
+        }
+        .cv-right {
+            flex: 2 1 420px;
+            padding: 40px 40px 40px 32px;
+            color: #e6e6e6;
+            background: #23263a;
+        }
+        .cv-title {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #00ffd0;
+            margin-bottom: 24px;
+            text-shadow: 0 2px 12px #00ffd044;
+        }
+        .cv-section {
+            margin-bottom: 32px;
+        }
+        .cv-section h3 {
+            color: #00ffd0;
+            font-size: 1.18em;
+            margin-bottom: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .cv-list {
+            margin: 0 0 0 18px;
+            padding: 0;
+            color: #23263a;
+            font-size: 1.05em;
+        }
+        .cv-list li {
+            margin-bottom: 8px;
+            line-height: 1.7;
+        }
+        .cv-contact {
+            font-size: 1.08em;
+            margin-bottom: 22px;
+            color: #23263a;
+        }
+        .cv-contact a {
+            color: #0055ff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .cv-contact a:hover {
+            text-decoration: underline;
+            color: #00ffd0;
+        }
+        .cv-label {
+            font-weight: bold;
+            color: #23263a;
+            margin-right: 4px;
+        }
+        .cv-divider {
+            width: 80%;
+            height: 1.5px;
+            background: linear-gradient(90deg, #00ffd0 40%, #0055ff 100%);
+            margin: 18px auto 24px auto;
+            border-radius: 2px;
+            opacity: 0.5;
+        }
+        .cv-right p, .cv-right li {
+            color: #e6e6e6;
+        }
+        .cv-right ul {
+            margin-left: 18px;
+        }
+        .cv-section:last-child {
+            margin-bottom: 0;
+        }
+        @media (max-width: 900px) {
+            .cv-container { flex-direction: column; }
+            .cv-left { min-width: 100%; box-shadow: none; padding: 32px 18px; }
+            .cv-right { padding: 32px 18px; }
+        }
+        .btn-voltar-cv {
+            display: block;
+            position: fixed;
+            top: 32px;
+            left: 32px;
+            background: linear-gradient(90deg, #00ffd0 60%, #00bfae 100%);
+            color: #181c2a;
+            font-weight: bold;
+            font-size: 1.08em;
+            padding: 12px 32px;
+            border-radius: 24px;
+            text-decoration: none;
+            box-shadow: 0 2px 12px rgba(0,255,208,0.10);
+            transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+            z-index: 200;
+            animation: btnPulse 2.2s infinite alternate;
+        }
+        .btn-voltar-cv:hover {
+            background: linear-gradient(90deg, #00bfae 60%, #00ffd0 100%);
+            color: #fff;
+            transform: scale(1.08);
+            box-shadow: 0 6px 24px rgba(0,255,208,0.18);
+        }
+        @keyframes btnPulse {
+            0% { box-shadow: 0 2px 12px rgba(0,255,208,0.10); }
+            100% { box-shadow: 0 8px 32px rgba(0,255,208,0.18); }
+        }
+        @media (max-width: 700px) {
+            .btn-voltar-cv { top: 12px; left: 12px; padding: 10px 18px; font-size: 1em; }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="btn-voltar-cv">Voltar para o Início</a>
+    <div class="cv-container">
+        <div class="cv-left">
+            <div class="cv-title">RONALDO AVANSINI</div>
+            <div class="cv-section cv-contact">
+                <div><span class="cv-label">Contato:</span></div>
+                <div>(16)99534-1387</div>
+                <div><a href="mailto:contato.ronaldoavansini@outlook.com">contato.ronaldoavansini@outlook.com</a></div>
+                <div>Rua Américo de Araújo Pires 407, Centro, 14210-015</div>
+            </div>
+            <div class="cv-divider"></div>
+            <div class="cv-section">
+                <h3>Habilidades</h3>
+                <ul class="cv-list">
+                    <li>Lógica de Programação</li>
+                    <li>Conhecimento prévio nas linguagens: Java, Node.js, C++, CSS, HTML, C, SQL (Oracle) e Python</li>
+                    <li>Conhecimento em Banco de Dados</li>
+                    <li>Experiência com coleta e documentação de requisitos</li>
+                    <li>Habilidades interpessoais: Trabalho em equipe, rápida capacidade de adaptação, perfil comunicativo</li>
+                </ul>
+            </div>
+            <div class="cv-divider"></div>
+            <div class="cv-section">
+                <h3>Idiomas</h3>
+                <ul class="cv-list">
+                    <li>Português: Nativo</li>
+                    <li>Inglês: Intermediário</li>
+                    <li>Espanhol: Básico</li>
+                </ul>
+            </div>
+        </div>
+        <div class="cv-right">
+            <div class="cv-section">
+                <h3>Objetivo Profissional</h3>
+                <p>Busco uma oportunidade para aplicar e desenvolver minhas habilidades em programação e tecnologia, contribuindo para projetos inovadores e desafiadores, enquanto aprimoro meus conhecimentos e crescimento profissional.</p>
+            </div>
+            <div class="cv-section">
+                <h3>Formação Acadêmica</h3>
+                <p>Ensino Médio Completo Centro de Educação Espaço Aprendiz (C.E.E.A)</p>
+                <p>Ensino Superior em andamento.<br>
+                Centro Universitário Barão de Mauá Bacharelado em Ciência da Computação (2022–2026) Atualmente cursando o 7º semestre.</p>
+            </div>
+            <div class="cv-section">
+                <h3>Experiência Profissional</h3>
+                <ul>
+                    <li>Desenvolvimento Dynamos FO: Ferramentas de Gestão.</li>
+                    <li>Consultas e Operações em DBA: MySQL e SQL.</li>
+                    <li>Infraestrutura de Redes: PF sense, Backup, Análise, Gerenciamento de redes.</li>
+                </ul>
+            </div>
+            <div class="cv-section">
+                <h3>Atividades Complementares</h3>
+                <ul>
+                    <li>Cursos e projetos extracurriculares nas áreas de: Desenvolvimento e Inteligência Artificial com Python. Cybersegurança.</li>
+                    <li>Estudos em plataformas educacionais como Alura para aprimorar habilidades de desenvolvimento e análise de código.</li>
+                </ul>
+            </div>
+            <div class="cv-section">
+                <h3>GitHub</h3>
+                <a href="https://github.com/Getsuga01" target="_blank" style="color:#00ffd0; font-weight:bold; text-decoration:none;">github.com/Getsuga01</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

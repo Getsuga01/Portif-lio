@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="about">
+<head>
+    <meta charset="UTF-8">
+    <title>Sobre Mim</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="about">
+    <div class="led-bar led-bottom"></div>
+    <header class="header-dark">
+        <nav class="nav-bar">
+            <a href="index.html" class="nav-logo">Portfólio</a>
+            <div class="nav-links">
+                <a href="index.html">Início</a>
+                <a href="about.html">Sobre</a>
+                <a href="projects.html">Projetos</a>
+                
+            </div>
+        </nav>
+        <div class="hero hero-small">
+            <img src="assets/img/sua-foto.jpeg" alt="Foto de perfil" class="hero-img">
+            <div class="hero-info">
+                <h1>Sobre Mim</h1>
+                <p class="descricao">Aqui você pode contar um pouco sobre sua trajetória, experiências e objetivos profissionais.</p>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="about-section">
+            <h2>Quem sou eu?</h2>
+            <p style="font-size:1.15em; color:#e6e6e6; line-height:1.7; max-width:700px; margin:24px auto 0 auto;">
+                <span style="display:block; color:#00ffd0; font-weight:bold; font-size:1.15em; margin-bottom:10px;">Olá! Meu nome é Ronaldo, tenho 21 anos e sou apaixonado por tecnologia e inovação.</span>
+                Estou no último ano do curso de Ciência da Computação pelo <span style="color:#00ffd0; font-weight:500;">CBM – Centro Universitario Barão de Mauá</span>, e atualmente estou dando meus primeiros passos como desenvolvedor, com foco em me tornar um <span style="color:#00ffd0; font-weight:500;">Full Stack Developer</span>.<br><br>
+                Tenho me dedicado a aprender e praticar as tecnologias mais utilizadas no mercado, como <span style="color:#00ffd0;">JavaScript</span>, <span style="color:#00ffd0;">React</span>, <span style="color:#00ffd0;">Node.js</span>, <span style="color:#00ffd0;">Express</span>, <span style="color:#00ffd0;">TypeScript</span> e <span style="color:#00ffd0;">Python</span>, além de conceitos fundamentais de bancos de dados relacionais (<span style="color:#00ffd0;">MySQL</span>, <span style="color:#00ffd0;">PostgreSQL</span>) e não-relacionais (<span style="color:#00ffd0;">MongoDB</span>). Também estou explorando o uso de ferramentas modernas como <span style="color:#00ffd0;">Git</span>, <span style="color:#00ffd0;">Docker</span> e <span style="color:#00ffd0;">APIs REST</span>, além de estudar fundamentos de <span style="color:#00ffd0;">DevOps</span> e <span style="color:#00ffd0;">CI/CD</span> para integração contínua.<br><br>
+                No front-end, me interesso por <span style="color:#00ffd0;">interfaces responsivas</span> e boas práticas de <span style="color:#00ffd0;">UI/UX</span>. No back-end, busco entender a fundo como construir sistemas robustos, seguros e escaláveis.<br><br>
+                Sou movido por desafios e aprendizado contínuo, e acredito que a tecnologia tem o poder de transformar realidades. Estou em busca de oportunidades para aplicar meus conhecimentos, colaborar com outros desenvolvedores e crescer profissionalmente nesse universo em constante evolução.<br><br>
+                <span style="display:block; color:#00ffd0; font-weight:bold; font-size:1.1em; margin-top:18px;">Se você busca alguém comprometido, curioso e pronto para aprender, vamos nos conectar!</span>
+            </p>
+        </section>
+    </main>
+    <!-- Ícone de contato fixo -->
+    <div class="contato-icone" title="Contato">
+        <!-- Ícone SVG de telefone -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a2 2 0 011.94 1.47l.7 2.8a2 2 0 01-.45 1.95l-1.27 1.27a16.06 16.06 0 006.58 6.58l1.27-1.27a2 2 0 011.95-.45l2.8.7A2 2 0 0121 18.72V22a2 2 0 01-2 2h-1C7.82 24 3 19.18 3 13V5z" /></svg>
+    </div>
+    <div class="contato-info-pop">
+        <p style="margin:0; font-size:1em; color:#00ffd0;">
+            <strong>Email:</strong> <a href="mailto:contato.ronaldoavansini@outlook.com">contato.ronaldoavansini@outlook.com</a><br>
+            <strong>Telefone:</strong> <a href="tel:+5516993541387">16 99 3541387</a>
+        </p>
+    </div>
+    <script>
+    // Animação de transição entre páginas: tela antiga sai e nova entra
+    document.querySelectorAll('.nav-links a, .nav-btn').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && !href.startsWith('http') && !href.startsWith('#')) {
+                e.preventDefault();
+                // Cria um overlay para a nova página
+                const overlay = document.createElement('div');
+                overlay.className = 'page-transition-in';
+                document.body.appendChild(overlay);
+                // Anima a página atual para a esquerda
+                document.body.classList.add('page-transition-out');
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 700);
+            }
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="projects">
+<head>
+    <meta charset="UTF-8">
+    <title>Projetos</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="projects">
+    <div class="led-bar led-bottom"></div>
+    <header class="header-dark">
+        <nav class="nav-bar">
+            <a href="index.html" class="nav-logo">Portfólio</a>
+            <div class="nav-links">
+                <a href="index.html">Início</a>
+                <a href="about.html">Sobre</a>
+                <a href="projects.html">Projetos</a>
+                
+            </div>
+           
+        </nav>
+        <div class="hero hero-small">
+            <img src="assets/img/sua-foto.jpeg"Foto de perfil" class="hero-img">
+            <div class="hero-info">
+                <h1>Meus Projetos</h1>
+                <p class="descricao">Veja alguns dos meus principais projetos e acesse meu GitHub para mais.</p>
+                <a href="https://github.com/Getsuga01" target="_blank" class="btn-cv">Veja mais no meu GitHub</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="about-section">
+            <h2>Divirta-se um Pouco</h2>
+            <div class="project-card" style="background:#23263a; border-radius:12px; padding:24px; margin:32px auto; max-width:420px; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+                <h3 style="color:#00aaff; margin-bottom:10px;">Jogo da Cobrinha (Snake)</h3>
+                <canvas id="snakeGame" width="320" height="320" style="background:#181c2a; border-radius:8px; display:block; margin:0 auto 12px auto; box-shadow:0 2px 8px #0055ff44;"></canvas>
+                <div style="text-align:center; margin-bottom:10px;">
+                    <button id="startBtn" style="background:#00aaff; color:#fff; border:none; border-radius:8px; padding:8px 18px; font-weight:bold; margin-right:8px; cursor:pointer;">Começar</button>
+                    <button id="pauseBtn" style="background:#0055ff; color:#fff; border:none; border-radius:8px; padding:8px 18px; font-weight:bold; margin-right:8px; cursor:pointer;">Pausar</button>
+                    <button id="restartBtn" style="background:#ff0033; color:#fff; border:none; border-radius:8px; padding:8px 18px; font-weight:bold; cursor:pointer;">Reiniciar</button>
+                </div>
+                <div style="text-align:center; color:#e6e6e6; font-size:1em; margin-bottom:8px;">Use as setas do teclado para jogar!</div>
+                <script>
+                const canvas = document.getElementById('snakeGame');
+                const ctx = canvas.getContext('2d');
+                const grid = 16;
+                let snake = [{x:160, y:160}];
+                let dx = grid, dy = 0;
+                let apple = {x: 80, y: 80};
+                let score = 0;
+                let gameOver = false;
+                let running = false;
+                let paused = false;
+                let intervalId;
+                function draw() {
+                    ctx.fillStyle = '#181c2a';
+                    ctx.fillRect(0,0,canvas.width,canvas.height);
+                    // Apple
+                    ctx.fillStyle = '#00ffd0';
+                    ctx.beginPath();
+                    ctx.arc(apple.x+grid/2, apple.y+grid/2, grid/2.2, 0, Math.PI*2);
+                    ctx.fill();
+                    // Snake
+                    for(let i=0;i<snake.length;i++){
+                        ctx.fillStyle = i==0 ? '#00aaff' : '#0055ff';
+                        ctx.fillRect(snake[i].x, snake[i].y, grid, grid);
+                    }
+                    // Score
+                    ctx.fillStyle = '#e6e6e6';
+                    ctx.font = 'bold 18px Segoe UI';
+                    ctx.fillText('Pontos: '+score, 10, 24);
+                    if(gameOver){
+                        ctx.fillStyle = '#ff0033';
+                        ctx.font = 'bold 28px Segoe UI';
+                        ctx.fillText('Game Over!', 70, 170);
+                    }
+                    if(paused && !gameOver){
+                        ctx.fillStyle = '#00ffd0';
+                        ctx.font = 'bold 24px Segoe UI';
+                        ctx.fillText('Pausado', 110, 170);
+                    }
+                }
+                function update(){
+                    if(gameOver || paused || !running) return;
+                    const head = {x: snake[0].x+dx, y: snake[0].y+dy};
+                    // Wall
+                    if(head.x<0||head.x>=canvas.width||head.y<0||head.y>=canvas.height){gameOver=true;draw();return;}
+                    // Self
+                    for(let s of snake){if(s.x==head.x&&s.y==head.y){gameOver=true;draw();return;}}
+                    snake.unshift(head);
+                    // Apple
+                    if(head.x==apple.x&&head.y==apple.y){
+                        score++;
+                        apple.x = Math.floor(Math.random()*20)*grid;
+                        apple.y = Math.floor(Math.random()*20)*grid;
+                    }else{
+                        snake.pop();
+                    }
+                    draw();
+                }
+                document.addEventListener('keydown',e=>{
+                    if(!running) return;
+                    if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)) {
+                        e.preventDefault();
+                    }
+                    if(e.key==='ArrowLeft'&&dx===0){dx=-grid;dy=0;}
+                    else if(e.key==='ArrowUp'&&dy===0){dx=0;dy=-grid;}
+                    else if(e.key==='ArrowRight'&&dx===0){dx=grid;dy=0;}
+                    else if(e.key==='ArrowDown'&&dy===0){dx=0;dy=grid;}
+                    else if(e.key==='r'&&gameOver){
+                        snake=[{x:160,y:160}];dx=grid;dy=0;apple={x:80,y:80};score=0;gameOver=false;draw();
+                    }
+                });
+                function startGame(){
+                    if(running) return;
+                    running = true;
+                    paused = false;
+                    gameOver = false;
+                    snake = [{x:160, y:160}];
+                    dx = grid; dy = 0;
+                    apple = {x:80, y:80};
+                    score = 0;
+                    draw();
+                    intervalId = setInterval(update, 120);
+                }
+                function pauseGame(){
+                    if(!running || gameOver) return;
+                    paused = !paused;
+                    draw();
+                }
+                function restartGame(){
+                    clearInterval(intervalId);
+                    running = true;
+                    paused = false;
+                    gameOver = false;
+                    snake = [{x:160, y:160}];
+                    dx = grid; dy = 0;
+                    apple = {x:80, y:80};
+                    score = 0;
+                    draw();
+                    intervalId = setInterval(update, 120);
+                }
+                document.getElementById('startBtn').onclick = function(){
+                    clearInterval(intervalId);
+                    startGame();
+                };
+                document.getElementById('pauseBtn').onclick = function(){
+                    pauseGame();
+                };
+                document.getElementById('restartBtn').onclick = function(){
+                    restartGame();
+                };
+                draw();
+                </script>
+            </div>
+            <p>O link do Git acima contém todos os meus projetos pessoais e para estudo.</p>
+        </section>
+    </main>
+    <!-- Ícone de contato fixo -->
+    <div class="contato-icone" title="Contato">
+        <!-- Ícone SVG de telefone -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a2 2 0 011.94 1.47l.7 2.8a2 2 0 01-.45 1.95l-1.27 1.27a16.06 16.06 0 006.58 6.58l1.27-1.27a2 2 0 011.95-.45l2.8.7A2 2 0 0121 18.72V22a2 2 0 01-2 2h-1C7.82 24 3 19.18 3 13V5z" /></svg>
+    </div>
+    <div class="contato-info-pop">
+        <p style="margin:0; font-size:1em; color:#00ffd0;">
+            <strong>Email:</strong> <a href="mailto:contato.ronaldoavansini@outlook.com">contato.ronaldoavansini@outlook.com</a><br>
+            <strong>Telefone:</strong> <a href="tel:+5516993541387">16 99 3541387</a>
+        </p>
+    </div>
+    <script>
+    // Animação de transição entre páginas: tela antiga sai e nova entra
+    document.querySelectorAll('.nav-links a, .nav-btn').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && !href.startsWith('http') && !href.startsWith('#')) {
+                e.preventDefault();
+                // Cria um overlay para a nova página
+                const overlay = document.createElement('div');
+                overlay.className = 'page-transition-in';
+                document.body.appendChild(overlay);
+                // Anima a página atual para a esquerda
+                document.body.classList.add('page-transition-out');
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 700);
+            }
+        });
+    });
+    </script>
+</body>
+</html>

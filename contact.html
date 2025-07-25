@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Contato</title>
+    <!-- Importa o arquivo de estilos -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Cabeçalho escuro com navegação -->
+    <header class="header-dark">
+        <nav class="nav-bar">
+            <!-- Logo do portfólio -->
+            <a href="index.html" class="nav-logo">Portfólio</a>
+            <!-- Links de navegação -->
+            <div class="nav-links">
+                <a href="index.html">Início</a>
+                <a href="about.html">Sobre</a>
+                <a href="projects.html">Projetos</a>
+                <a href="contact.html">Contato</a>
+            </div>
+            <!-- Botão de destaque para contato -->
+            
+        </nav>
+        <!-- Área de apresentação com foto e título -->
+        <div class="hero hero-small">
+            <img src="assets/img/sua-foto.jpeg" alt="Foto de perfil" class="hero-img">
+            <div class="hero-info">
+                <h1>Contato</h1>
+                <p class="descricao">Entre em contato para orçamentos, dúvidas ou parcerias.</p>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!-- Bloco principal de contato -->
+        <section class="about-section">
+            <h2>Fale comigo</h2>
+            <div style="margin-bottom:18px; text-align:center;">
+                <p style="font-size:1.08em; color:#00ffd0; margin:6px 0;">
+                    <strong>Email:</strong> <a href="mailto:contato.ronaldoavansini@outlook.com" style="color:#00ffd0; text-decoration:underline;">contato.ronaldoavansini@outlook.com</a><br>
+                    <strong>Telefone:</strong> <a href="tel:+5516993541387" style="color:#00ffd0; text-decoration:underline;">16 99 3541387</a>
+                </p>
+            </div>
+            <form>
+                <!-- Campo para nome -->
+                <label for="nome">Nome:</label><br>
+                <input type="text" id="nome" name="nome"><br>
+                <!-- Campo para email -->
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email"><br>
+                <!-- Campo para mensagem -->
+                <label for="mensagem">Mensagem:</label><br>
+                <textarea id="mensagem" name="mensagem"></textarea><br>
+                <!-- Botão de envio -->
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+    <script>
+    // Animação de transição entre páginas: tela antiga sai e nova entra
+    document.querySelectorAll('.nav-links a, .nav-btn').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && !href.startsWith('http') && !href.startsWith('#')) {
+                e.preventDefault();
+                // Cria um overlay para a nova página
+                const overlay = document.createElement('div');
+                overlay.className = 'page-transition-in';
+                document.body.appendChild(overlay);
+                // Anima a página atual para a esquerda
+                document.body.classList.add('page-transition-out');
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 700);
+            }
+        });
+    });
+
+    // Mini banco de dados local para salvar mensagens do formulário
+    const form = document.querySelector('.about-section form');
+    const messagesDiv = document.createElement('div');
+    messagesDiv.style.marginTop = '32px';
+    form.parentNode.appendChild(messagesDiv);
+
+    function renderMessages() {
+        const messages = JSON.parse(localStorage.getItem('contato-mensagens') || '[]');
+        if (messages.length === 0) {
+            messagesDiv.innerHTML = '<em>Nenhuma mensagem enviada ainda.</em>';
+            return;
+        }
+        messagesDiv.innerHTML = '<h3>Mensagens salvas:</h3>' + messages.map(m => `
+            <div style="background:#23263a;padding:12px 18px;margin:10px 0;border-radius:8px;text-align:left;">
+                <strong>Nome:</strong> ${m.nome}<br>
+                <strong>Email:</strong> ${m.email}<br>
+                <strong>Mensagem:</strong> ${m.mensagem}
+            </div>
+        `).join('');
+    }
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const nome = form.nome.value.trim();
+        const email = form.email.value.trim();
+        const mensagem = form.mensagem.value.trim();
+        if (!nome || !email || !mensagem) return alert('Preencha todos os campos!');
+        const messages = JSON.parse(localStorage.getItem('contato-mensagens') || '[]');
+        messages.push({ nome, email, mensagem });
+        localStorage.setItem('contato-mensagens', JSON.stringify(messages));
+        form.reset();
+        renderMessages();
+        alert('Mensagem salva com sucesso!');
+    });
+
+    renderMessages();
+    </script>
+</body>
+</html>

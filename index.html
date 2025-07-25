@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="index">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu Portfólio</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .btn-cv-web {
+            display: inline-block;
+            margin-top: 10px;
+            background: linear-gradient(90deg, #00ffd0 60%, #00bfae 100%);
+            color: #181c2a;
+            padding: 10px 28px;
+            border-radius: 24px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 12px rgba(0,255,208,0.10);
+            animation: btnPulseWeb 2.2s infinite alternate;
+        }
+        .btn-cv-web:hover {
+            background: linear-gradient(90deg, #00bfae 60%, #00ffd0 100%);
+            color: #fff;
+            transform: scale(1.08);
+            box-shadow: 0 6px 24px rgba(0,255,208,0.18);
+        }
+        @keyframes btnPulseWeb {
+            0% { box-shadow: 0 2px 12px rgba(0,255,208,0.10); }
+            100% { box-shadow: 0 8px 32px rgba(0,255,208,0.18); }
+        }
+    </style>
+</head>
+<body class="index">
+    <div class="led-bar led-bottom"></div>
+    <header class="header-dark">
+        <nav class="nav-bar">
+            <a href="index.html" class="nav-logo">Portfólio</a>
+            <div class="nav-links">
+                <a href="index.html">Início</a>
+                <a href="about.html">Sobre</a>
+                <a href="projects.html">Projetos</a>
+            </div>
+        </nav>
+        <div class="hero">
+            <img src="assets/img/sua-foto.jpeg" alt="Foto de perfil" class="hero-img">
+            <div class="hero-info">
+                <h1>Olá, eu sou <span class="destaque">Ronaldo Avansini</span></h1>
+                <p class="profissao">Desenvolvedor Full Stack</p>
+                <p class="descricao">Com experiência em criar sites modernos, rápidos e responsivos.</p>
+                <p class="descricao">Experiência em desenvolvimento Java Spring Boot</p>
+                <p class="descricao">Experiência em Infraestrutura e redes</p>
+                <a href="assets/curriculo/Curriculo.pdf" class="btn-cv" download>Baixar Currículo (PDF)</a>
+                <a href="curriculo.html" class="btn-cv btn-cv-web">Ver Currículo Web</a>
+                
+           
+        </div>
+        <div class="skills">
+            <div class="skill-item">
+                <span class="skill-icon">⚡</span>
+                <h3>Rápido</h3>
+                <p>Desempenho otimizado em todos os dispositivos.</p>
+            </div>
+            <div class="skill-item">
+                <span class="skill-icon">📱</span>
+                <h3>Responsivo</h3>
+                <p>Layout adaptável para qualquer tela.</p>
+            </div>
+            <div class="skill-item">
+                <span class="skill-icon">💡</span>
+                <h3>Intuitivo</h3>
+                <p>Experiência de usuário simples e eficiente.</p>
+            </div>
+            <div class="skill-item">
+                <span class="skill-icon">⚙️</span>
+                <h3>Dinâmico</h3>
+                <p>Funcionalidades modernas e interativas.</p>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="about-section">
+            <h2>Soft e Hard Skills</h2>
+            <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:32px; margin-top:24px;">
+                <div class="skills-animate" style="background:#23263a; border-radius:10px; padding:24px 32px; min-width:220px; max-width:320px; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+                    <h3 style="color:#00ffd0; margin-bottom:10px;">Soft Skills</h3>
+                    <ul style="text-align:left; color:#e6e6e6; font-size:1.08em; line-height:1.7; margin:0; padding-left:18px;">
+                        <li>Comunicação clara</li>
+                        <li>Trabalho em equipe</li>
+                        <li>Resolução de problemas</li>
+                        <li>Adaptabilidade</li>
+                        <li>Proatividade</li>
+                    </ul>
+                </div>
+                <div class="skills-animate" style="background:#23263a; border-radius:10px; padding:24px 32px; min-width:220px; max-width:320px; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+                    <h3 style="color:#00ffd0; margin-bottom:10px;">Hard Skills</h3>
+                    <ul style="text-align:left; color:#e6e6e6; font-size:1.08em; line-height:1.7; margin:0; padding-left:18px;">
+                        <li>HTML, CSS, JavaScript</li>
+                        <li>React, Vue.js</li>
+                        <li>Git & Versionamento</li>
+                        <li>APIs REST</li>
+                        <li>Design Responsivo</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div class="contato-icone" title="Contato">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a2 2 0 011.94 1.47l.58 2.32a2 2 0 01-.45 1.95l-1.35 1.35a16.015 16.015 0 006.58 6.58l1.35-1.35a2 2 0 011.95-.45l2.32.58A2 2 0 0121 18.72V21a2 2 0 01-2 2h-1C9.163 23 3 16.837 3 9V7a2 2 0 012-2z" /></svg>
+    </div>
+    <div class="contato-info-pop">
+        <strong>Email:</strong> ronaldo@email.com<br>
+        <strong>Telefone:</strong> (99) 99999-9999
+    </div>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
